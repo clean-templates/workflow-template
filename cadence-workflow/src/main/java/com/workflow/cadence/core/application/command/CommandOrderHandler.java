@@ -5,7 +5,6 @@ import com.uber.cadence.client.WorkflowClient;
 import com.uber.cadence.client.WorkflowOptions;
 import com.uber.cadence.client.WorkflowStub;
 import com.workflow.cadence.api.order.OrderApiRequest;
-import com.workflow.cadence.core.application.workflow.main.IOrderWorkflow;
 import com.workflow.cadence.core.domain.FoodProduct;
 import com.workflow.cadence.core.domain.Order;
 import lombok.AllArgsConstructor;
