@@ -1,4 +1,4 @@
-# workflow-template
+# Workflow Template
 
 Web applications can often involve complex workflows that span across multiple systems and stages. Long workflow processes can involve multiple tasks, approvals, and stakeholders, making them difficult to manage without a proper system in place. A well-designed workflow management system can help simplify the process, ensuring that each task is completed on time and that all stakeholders are informed about the progress of the workflow. It can also help improve efficiency by automating repetitive tasks, reducing the chances of errors, and ensuring that everything is done in a timely and organized manner.
 
