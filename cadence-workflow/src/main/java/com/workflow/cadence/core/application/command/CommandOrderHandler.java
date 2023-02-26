@@ -26,9 +26,11 @@ public class CommandOrderHandler implements ICommandOrderHandler {
     @Override
     public void startOrder(OrderApiRequest request) {
         Order order = mapFrom(request);
-        WorkflowStub workflowStub = workflowClient.newUntypedWorkflowStub("IOrderWorkflow::start", getWorkflowOptions(order.getId()));
+        WorkflowStub workflowStub = workflowClient.newUntypedWorkflowStub("IOrderWorkflow::start",
+                getWorkflowOptions(order.getId()));
         workflowStub.start(order);
     }
+
 
     private WorkflowOptions getWorkflowOptions(String id) {
         return new WorkflowOptions.Builder().setWorkflowId(id)

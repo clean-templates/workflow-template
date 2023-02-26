@@ -10,6 +10,6 @@ public interface IOrderActivity {
 
     @ActivityMethod(name = "validate")
     boolean validate(Order order);
-
-
 }
+
+

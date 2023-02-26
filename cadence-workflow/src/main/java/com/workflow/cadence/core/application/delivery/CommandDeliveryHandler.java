@@ -21,16 +21,10 @@ public class CommandDeliveryHandler implements ICommandDeliveryHandler{
 
     @Override
     public void assignDriver(AssignDriverApiRequest req) {
-        WorkflowStub workflowStub = workflowClient.newUntypedWorkflowStub(req.getOrderId(), Optional.empty(), Optional.empty());
+        WorkflowStub workflowStub = workflowClient.newUntypedWorkflowStub(req.getOrderId(),
+                Optional.empty(),
+                Optional.empty());
         workflowStub.signal("assignToDriver", req.getDriverId());
 
-    }
-
-    private WorkflowOptions getWorkflowOptions(String id) {
-        return new WorkflowOptions.Builder().setWorkflowId(id)
-                .setTaskList(ORDER_TASK_LIST)
-                .setExecutionStartToCloseTimeout(Duration.ofDays(10))
-                .setWorkflowIdReusePolicy(WorkflowIdReusePolicy.AllowDuplicate)
-                .build();
     }
 }

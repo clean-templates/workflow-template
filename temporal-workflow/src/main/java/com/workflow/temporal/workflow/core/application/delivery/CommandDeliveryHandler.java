@@ -17,9 +17,12 @@ public class CommandDeliveryHandler implements ICommandDeliveryHandler {
 
     @Override
     public void assignDriver(AssignDriverApiRequest req) {
-        WorkflowStub workflowStub = workflowClient.newUntypedWorkflowStub(req.getOrderId(), Optional.empty(), Optional.empty());
+        WorkflowStub workflowStub = workflowClient.newUntypedWorkflowStub(req.getOrderId(),
+                Optional.empty(),
+                Optional.empty());
         workflowStub.signal("assignToDriver", req.getDriverId());
 
     }
 
 }
+

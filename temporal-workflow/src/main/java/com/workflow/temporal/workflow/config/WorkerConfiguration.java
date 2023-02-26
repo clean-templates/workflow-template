@@ -30,7 +30,6 @@ public class WorkerConfiguration {
     }
 
 
-
     @Bean
     public WorkerFactory managementWorker(WorkflowClient client) {
         WorkerFactory factory = WorkerFactory.newInstance(client);
@@ -44,5 +43,5 @@ public class WorkerConfiguration {
         orderWorker.registerActivitiesImplementations(orderActivity);
         return factory;
     }
-
 }
+
