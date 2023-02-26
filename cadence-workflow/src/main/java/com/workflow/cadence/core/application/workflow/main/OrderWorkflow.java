@@ -21,7 +21,6 @@ public class OrderWorkflow implements IOrderWorkflow{
     public void start(Order order) {
         orderActivity.validate(order);
 
-
         order.getProducts().stream().forEach(foodProduct ->
         {
             IPrepareWorkflow prepareWorkflow = Workflow.newChildWorkflowStub(IPrepareWorkflow.class, getChildWorkflowOptions(foodProduct.getId()));

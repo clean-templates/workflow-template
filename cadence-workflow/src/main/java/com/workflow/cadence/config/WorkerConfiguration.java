@@ -39,7 +39,6 @@ public class WorkerConfiguration {
         prepareWorker.registerWorkflowImplementationTypes(PrepareWorkflow.class);
 
         orderWorker.registerActivitiesImplementations(orderActivity);
-
         return factory;
     }
 

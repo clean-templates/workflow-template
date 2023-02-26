@@ -9,7 +9,7 @@ public interface IOrderWorkflow {
     @WorkflowMethod()
     void start(Order order);
 
-    @SignalMethod
+    @SignalMethod(name = "assignToDriver")
     void assignToDriver(String driverId);
 
 }
