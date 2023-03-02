@@ -1,25 +1,33 @@
 package com.workflow.temporal.workflow.config;
 
+import io.temporal.client.WorkflowClient;
+import io.temporal.serviceclient.WorkflowServiceStubs;
 import io.temporal.worker.WorkerFactory;
-import jakarta.annotation.PreDestroy;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Data
 @AllArgsConstructor
-public class TemporalLauncher implements CommandLineRunner {
+@Configuration
+public class TemporalLauncher {
 
-    private final WorkerFactory workerFactory;
-
-    @Override
-    public void run(String... args) throws Exception {
-        workerFactory.start();
-
+    @Bean
+    public WorkflowServiceStubs workflowServiceStubs() {
+        return WorkflowServiceStubs.newLocalServiceStubs();
     }
-    @PreDestroy
-    public void shutdown(){
-        workerFactory.shutdownNow();
+
+    @Bean
+    public WorkflowClient workflowClient(WorkflowServiceStubs workflowServiceStubs) {
+        return WorkflowClient.newInstance(workflowServiceStubs);
+    }
+
+    @Bean
+    public WorkerFactory workerFactory(WorkflowClient client) {
+        return WorkerFactory.newInstance(client);
+
     }
 
 }

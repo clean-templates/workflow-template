@@ -2,6 +2,7 @@ package com.workflow.temporal.workflow.core.application.workflow.main;
 
 import com.workflow.temporal.workflow.core.application.workflow.prepare.IPrepareWorkflow;
 import com.workflow.temporal.workflow.core.domain.Order;
+import io.temporal.activity.Activity;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.api.enums.v1.WorkflowIdReusePolicy;
 import io.temporal.workflow.ChildWorkflowOptions;
@@ -23,8 +24,8 @@ public class OrderWorkflow implements IOrderWorkflow {
 
     @Override
     public void start(Order order) {
+        log.info("Workflow logs:" + Workflow.getInfo().getWorkflowId());
         orderActivity.validate(order);
-
         order.getProducts().forEach(foodProduct ->
         {
             IPrepareWorkflow prepareWorkflow = Workflow.newChildWorkflowStub(IPrepareWorkflow.class, getChildWorkflowOptions(foodProduct.getId()));
