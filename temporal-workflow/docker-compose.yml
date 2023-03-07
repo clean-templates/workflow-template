@@ -48,6 +48,22 @@ services:
       - temporal-network
     ports:
       - 8080:8080
+
+  spring-service:
+    image: spring-service:1.0.0
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: spring-service
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - temporal-network
+    depends_on:
+      - temporal
+
 networks:
   temporal-network:
     driver: bridge
