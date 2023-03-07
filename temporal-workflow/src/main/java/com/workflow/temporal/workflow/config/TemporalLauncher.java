@@ -2,6 +2,7 @@ package com.workflow.temporal.workflow.config;
 
 import io.temporal.client.WorkflowClient;
 import io.temporal.serviceclient.WorkflowServiceStubs;
+import io.temporal.serviceclient.WorkflowServiceStubsOptions;
 import io.temporal.worker.WorkerFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +17,12 @@ public class TemporalLauncher {
 
     @Bean
     public WorkflowServiceStubs workflowServiceStubs() {
-        return WorkflowServiceStubs.newLocalServiceStubs();
+        return WorkflowServiceStubs.newServiceStubs(
+                WorkflowServiceStubsOptions.newBuilder()
+                        .setTarget("localhost:7233")
+                        .build());
+
+
     }
 
     @Bean
