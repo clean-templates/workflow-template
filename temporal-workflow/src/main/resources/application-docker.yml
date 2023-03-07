@@ -3,4 +3,4 @@ server:
 
 
 temporal:
-  url: "localhost:7233"
+  url: "temporal:7233"
